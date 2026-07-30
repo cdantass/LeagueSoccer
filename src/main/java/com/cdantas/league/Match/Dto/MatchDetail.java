@@ -3,7 +3,7 @@ package com.cdantas.league.Match.Dto;
 import com.cdantas.league.Match.Entity.Match;
 import com.cdantas.league.Match.Entity.Status;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public record MatchDetail(
         Long id,
@@ -15,7 +15,7 @@ public record MatchDetail(
         String awayTeamName,
         String awayTeamAbbreviation,
         String awayTeamLogoUrl,
-        Date matchDate,
+        LocalDateTime matchDate,
         Status status,
         int homeScore,
         int awayScore,
@@ -27,11 +27,11 @@ public record MatchDetail(
                 match.getHomeTeam().getId(),
                 match.getHomeTeam().getName(),
                 match.getHomeTeam().getAbbreviation(),
-                match.getHomeTeam().getLogo_url(),
+                match.getHomeTeam().getLogoUrl(),
                 match.getAwayTeam().getId(),
                 match.getAwayTeam().getName(),
                 match.getAwayTeam().getAbbreviation(),
-                match.getAwayTeam().getLogo_url(),
+                match.getAwayTeam().getLogoUrl(),
                 match.getMatchDate(),
                 match.getStatus(),
                 match.getHomeScore(),

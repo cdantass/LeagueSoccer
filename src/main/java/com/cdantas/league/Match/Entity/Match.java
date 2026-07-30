@@ -4,12 +4,12 @@ import com.cdantas.league.Team.Entity.Team;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "matchs")
+@Table(name = "matches")
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -29,7 +29,7 @@ public class Match {
     private Team awayTeam;
 
     @Column(name = "match_date")
-    private Date matchDate;
+    private LocalDateTime matchDate;
 
     @Enumerated(EnumType.STRING)
     private Status status;

@@ -28,11 +28,12 @@ public class Team {
     private String abbreviation;
 
     @Column(name = "logo_url")
-    private String logo_url;
+    private String logoUrl;
 
     private String city;
 
-    private int founded_year;
+    @Column(name = "founded_year")
+    private int foundedYear;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
@@ -50,6 +51,6 @@ public class Team {
         this.name = teamRegister.name();
         this.abbreviation = teamRegister.abbreviation();
         this.city = teamRegister.city();
-        this.founded_year = teamRegister.founded_year();
+        this.foundedYear = teamRegister.foundedYear();
     }
 }

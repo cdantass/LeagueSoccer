@@ -22,12 +22,13 @@ public class SoccerPlayer {
 
     private String position;
 
-    private Integer jersey_number;
+    @Column(name = "jersey_number")
+    private Integer jerseyNumber;
 
     private int age;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
-    private Team team_id;
+    private Team team;
 
 }

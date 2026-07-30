@@ -2,9 +2,8 @@ package com.cdantas.league.Match.Dto;
 
 import com.cdantas.league.Match.Entity.Match;
 import com.cdantas.league.Match.Entity.Status;
-import com.cdantas.league.Team.Entity.Team;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public record MatchList(
         Long id,
@@ -12,7 +11,7 @@ public record MatchList(
         String homeTeamName,
         Long awayTeamId,
         String awayTeamName,
-        Date matchDate,
+        LocalDateTime matchDate,
         Status status
 ) {
     public MatchList(Match match) {
