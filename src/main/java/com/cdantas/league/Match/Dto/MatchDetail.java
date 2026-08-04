@@ -22,8 +22,7 @@ public record MatchDetail(
         long venue
 ) {
     public MatchDetail(Match match) {
-        this(
-                match.getId(),
+        this(match.getId(),
                 match.getHomeTeam().getId(),
                 match.getHomeTeam().getName(),
                 match.getHomeTeam().getAbbreviation(),

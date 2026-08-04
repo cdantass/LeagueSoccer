@@ -15,8 +15,7 @@ public record MatchList(
         Status status
 ) {
     public MatchList(Match match) {
-        this(
-                match.getId(),
+        this(match.getId(),
                 match.getHomeTeam().getId(),
                 match.getHomeTeam().getName(),
                 match.getAwayTeam().getId(),
