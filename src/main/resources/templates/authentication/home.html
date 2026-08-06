@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>League Soccer - Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        .navbar {
+            background: #1e3a5f;
+            color: #fff;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-logo {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .navbar-logo span {
+            margin-right: 6px;
+        }
+
+        .navbar-menu a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 16px;
+            font-size: 14px;
+        }
+
+        .navbar-menu a:hover {
+            text-decoration: underline;
+        }
+
+        .logout-form {
+            margin: 0;
+        }
+
+        .btn-logout {
+            background: #e74c3c;
+            border: none;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .btn-logout:hover {
+            background: #c0392b;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #1e3a5f;
+        }
+    </style>
+</head>
+<body>
+
+<div layout:fragment="conteudo">
+    <header class="navbar">
+        <div class="navbar-left">
+            <div class="navbar-logo">
+                <span>⚽</span> League Soccer
+            </div>
+            <nav class="navbar-menu">
+                <a href="/" th:href="@{/}">Dashboard</a>
+                <a href="#" th:href="@{/teams}">Times</a>
+                <a href="#" th:href="@{/matches}">Partidas</a>
+                <a href="#" th:href="@{/players}">Jogadores</a>
+            </nav>
+        </div>
+
+        <!-- Logout -->
+        <form class="logout-form" th:action="@{/logout}" method="post">
+            <button type="submit" class="btn-logout">Sair</button>
+        </form>
+    </header>
+
+    <main class="content">
+        <section class="card">
+            <h2>Bem-vindo ao League Soccer!</h2>
+            <p>Escolha uma opção no menu acima para gerenciar times, partidas e jogadores.</p>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>
