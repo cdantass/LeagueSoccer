@@ -40,3 +40,4 @@ application.properties
 application-local.yml
 *.local.properties
 
+.application.yml
