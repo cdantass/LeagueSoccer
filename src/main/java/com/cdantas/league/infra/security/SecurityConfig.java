@@ -15,21 +15,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-/**
- * Stateless security config for API consumed by the Flutter app (JWT based).
- *
- * NOTE: user store is still in-memory (single hardcoded user), same as before.
- * Beans de UserDetailsService/PasswordEncoder ficam em UserConfig.java para
- * evitar dependência circular com o JwtAuthenticationFilter.
- * Next step should be a real User entity + UserRepository-backed UserDetailsService
- * so registration/multiple users work.
- */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    private final RestAccessDeniedHandler restAccessDeniedHandler;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider(UserDetailsService userDetailsService,
@@ -49,6 +42,10 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .exceptionHandling(handling -> handling
+                        .authenticationEntryPoint(restAuthenticationEntryPoint)
+                        .accessDeniedHandler(restAccessDeniedHandler)
+                )
                 .authorizeHttpRequests(req -> req
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()

@@ -31,10 +31,10 @@ public class AuthController {
     @PostMapping("/login")
     public AuthDtos.LoginResponse login(@Valid @RequestBody AuthDtos.LoginRequest request) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.username(), request.password())
+                new UsernamePasswordAuthenticationToken(request.email(), request.password())
         );
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername(request.username());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(request.email());
         String token = jwtService.generateToken(userDetails);
 
         return new AuthDtos.LoginResponse(token);

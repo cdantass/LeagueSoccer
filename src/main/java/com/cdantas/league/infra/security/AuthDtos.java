@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public class AuthDtos {
 
     public record LoginRequest(
-            @NotBlank String username,
+            @NotBlank String email,
             @NotBlank String password
     ) {}
 
