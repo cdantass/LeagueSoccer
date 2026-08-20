@@ -1,7 +1,9 @@
 package com.cdantas.league.Match.Dto;
 
+import jakarta.validation.constraints.PositiveOrZero;
+
 public record MatchUpdate(
         String status,
-        Integer homeScore,
-        Integer awayScore
+        @PositiveOrZero Integer homeScore,
+        @PositiveOrZero Integer awayScore
 ) {}

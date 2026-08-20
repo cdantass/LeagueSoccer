@@ -86,4 +86,14 @@ public class GlobalExceptionHandler {
         ApiError body = new ApiError(status.value(), status.getReasonPhrase(), message);
         return ResponseEntity.status(status).body(body);
     }
+
+    @ExceptionHandler(InvalidRefreshToken.class)
+    public ResponseEntity<ApiError> handleInvalidRefreshToken(InvalidRefreshToken ex) {
+        return build(HttpStatus.UNAUTHORIZED, ex.getMessage());
+    }
+
+    @ExceptionHandler(TooManyLoginAttempts.class)
+    public ResponseEntity<ApiError> handleTooManyAttempts(TooManyLoginAttempts ex) {
+        return build(HttpStatus.TOO_MANY_REQUESTS, ex.getMessage());
+    }
 }
